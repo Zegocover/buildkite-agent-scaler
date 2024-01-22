@@ -27,6 +27,9 @@ func main() {
 		scaleInFactor  = flag.Float64("scale-in-factor", 1.0, "A factor to apply to scale ins")
 		scaleOutFactor = flag.Float64("scale-out-factor", 1.0, "A factor to apply to scale outs")
 		instanceBuffer = flag.Int("instance-buffer", 0, "Keep this many instances as extra capacity")
+		disableScaleIn = flag.Bool("disable-scale-in", false, "Disable scaling in")
+		disableScaleOut = flag.Bool("disable-scale-out", false, "Disable scaling out")
+
 
 		// general params
 		dryRun = flag.Bool("dry-run", false, "Whether to just show what would be done")
@@ -55,8 +58,8 @@ func main() {
 		PublishCloudWatchMetrics: *cwMetrics,
 		DryRun:                   *dryRun,
 		IncludeWaiting:           *includeWaiting,
-		ScaleInParams:            scaler.ScaleParams{Factor: *scaleInFactor},
-		ScaleOutParams:           scaler.ScaleParams{Factor: *scaleOutFactor},
+		ScaleInParams:            scaler.ScaleParams{Factor: *scaleInFactor, Disable: *disableScaleIn},
+		ScaleOutParams:           scaler.ScaleParams{Factor: *scaleOutFactor, Disable: *disableScaleOut},
 		InstanceBuffer:           *instanceBuffer,
 	})
 	if err != nil {
