@@ -1,0 +1,30 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: buildkite-agent-scaler
+spec:
+  owner: systems-engineering
+  domain: development-platform
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: buildkite-agent-scaler
+  title: Buildkite Agent Scaler
+  description: 📈A lambda for scaling an AutoScalingGroup based on Buildkite metrics
+  tags:
+    - go
+    - shell
+    - makefile
+  annotations:
+    backstage.io/source-location: url:https://github.com/Zegocover/buildkite-agent-scaler/
+    backstage.io/techdocs-ref: dir:.
+    buildkite.com/project-slug: tego/buildkite-agent-scaler
+    snyk.io/org-id: 276f1e65-4e71-4504-b35f-5a907c1779e8
+    snyk.io/targets: Zegocover/buildkite-agent-scaler
+  links: []
+spec:
+  type: service
+  owner: systems-engineering
+  lifecycle: deprecated
+  system: buildkite-agent-scaler
